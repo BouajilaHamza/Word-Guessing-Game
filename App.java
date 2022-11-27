@@ -6,6 +6,7 @@ import java.util.*;				//import declarations
 import java.io.*;
 public class App {
 
+ protected   String tries = JOptionPane.showInputDialog("Numbre of Tries : ");
 
 
     public static void main(String [] args) throws IOException
@@ -13,9 +14,14 @@ public class App {
     //Calling welcome Screen
  	Procedure.message();
  	//Game object
+    //  int nbtry <  Integer.parseInt(tries) ;
     Game g = new Game();
+    // Game g1 = new Game();
+
     //Play game method
-    g.playGame();
+    g.playGamep1();
+    g.playGamep2();
+    // g1.playGame();
 
     }
 
