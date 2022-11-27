@@ -45,11 +45,11 @@ public class Start
 		}
 
 		File file = new File(txtfile);
-		Scanner inputFile = new Scanner(file);
-
-		for(int x=0;x<array.length;x++)
-		{
-			array[x]=inputFile.nextLine();
+		try (Scanner inputFile = new Scanner(file)) {
+			for(int x=0;x<array.length;x++)
+			{
+				array[x]=inputFile.nextLine();
+			}
 		}
 
 

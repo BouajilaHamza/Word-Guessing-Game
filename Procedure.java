@@ -66,11 +66,11 @@ public class Procedure
 		}
 
 		File file = new File(txtfile);				//file object
-		Scanner inputFile = new Scanner(file);		//Scanner object to read from file
-
-		for(int x=0;x<array.length;x++)
-		{
-			array[x]=inputFile.nextLine();	//populating array with random words from file.
+		try (Scanner inputFile = new Scanner(file)) {
+			for(int x=0;x<array.length;x++)
+			{
+				array[x]=inputFile.nextLine();	//populating array with random words from file.
+			}
 		}
 
 

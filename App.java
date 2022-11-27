@@ -2,7 +2,7 @@
 //I did not receive help from anyone on this project
 
 import javax.swing.JOptionPane;
-import java.util.*;				//import declarations
+// import java.util.*;				//import declarations
 import java.io.*;
 public class App {
 
