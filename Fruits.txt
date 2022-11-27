@@ -1,0 +1,11 @@
+banana
+apple
+pear
+grape
+orange
+lime
+kiwi
+tomato
+clementine
+watermelon
+pineapple
