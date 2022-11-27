@@ -15,7 +15,7 @@ public class App {
  	Procedure.message();
  	//Game object
     //  int nbtry <  Integer.parseInt(tries) ;
-    Game g = new Game();
+    game g = new game();
     // Game g1 = new Game();
 
     //Play game method

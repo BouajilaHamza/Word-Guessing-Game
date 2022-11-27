@@ -20,6 +20,10 @@ public class game{
 	int count1;
 	int count2;
 
+
+
+
+	
 	boolean playAgain;
 	String play;
 	int numTries;
