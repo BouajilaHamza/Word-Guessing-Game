@@ -41,28 +41,30 @@ public class game{
 		playAgain=true;			//variable to test if user wants to play game again
 		numTries=0;
 
+		//add shuffled list with letters of the right word
+		String word1=fp1.getWord();
+		List<String> letters = Arrays.asList(word1.split(""));
+		Collections.shuffle(letters);
+		String shuffled = "";
+   
+		for (String letter : letters) {
+			shuffled += letter;}
+		char[] liste=shuffled.toCharArray();
+		L=liste;
+		
     	  for(int x=0;x<fp1.getLength();x++) 	//populatiing gameboard with _ characters of the length of the word.
     	 {
-    	 	gameboard1[x]='_';
+    	 	L[x]='_';
     	 }
 
 		 for(int x=0;x<fp2.getLength();x++) 	//populatiing gameboard with _ characters of the length of the word.
     	 {
-    	 	gameboard2[x]='_';
+    	 	L[x]='_';
     	 }
     
 
 
-	 //add shuffled list with letters of the right word
-	 String word1=fp1.getWord();
-	 List<String> letters = Arrays.asList(word1.split(""));
-	 Collections.shuffle(letters);
-	 String shuffled = "";
-
-	 for (String letter : letters) {
-		 shuffled += letter;}
-	 char[] liste=shuffled.toCharArray();
-	 L=liste; 
+	  
 	}
 
 
