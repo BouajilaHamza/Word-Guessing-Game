@@ -31,7 +31,7 @@ public class game{
 	int scorep1 ;
 	int scorep2;
 	int nbtry ;
-
+	Random r  = new Random();
     public game()throws IOException
     {
     	fp1 = new Procedure();	//Procedure object player1
@@ -46,36 +46,17 @@ public class game{
 
 		//add shuffled list for fp1 and fp2 with letters of the right word
 
-		//fp1
-		String word1=fp1.getWord();
-		List<String> letters1 = Arrays.asList(word1.split(""));
-		Collections.shuffle(letters1);
-		String shuffled1 = "";
-		for (String letter : letters1) {
-			shuffled1 += letter;}
-		char[] liste1=shuffled1.toCharArray();
-		L1=liste1;
-
-		//fp2
-		String word2=fp2.getWord();
-		List<String> letters2 = Arrays.asList(word2.split(""));
-		Collections.shuffle(letters2);
-		String shuffled2 = "";
-		for (String letter : letters2) {
-			shuffled1 += letter;}
-		char[] liste2=shuffled2.toCharArray();
-		L2=liste2;
-
 		
-    	  for(int x=0;x<fp1.getLength();x++) 	//populatiing gameboard with _ characters of the length of the word.
+		
+    	  for(int x=0;x<fp1.getLength() ;x++) 	//populatiing gameboard with _ characters of the length of the word.
     	 {
-    	 	L1[x]='_';
+    	 	gameboard1[x] = scramble(r, fp1.getWord())[x] ;
     	 }
 
 		 for(int x=0;x<fp2.getLength();x++) 	//populatiing gameboard with _ characters of the length of the word.
     	 {
-    	 	L2[x]='_';
-    	 }
+			gameboard2[x] = scramble(r, fp2.getWord())[x] ;
+		}
     
 
 
@@ -83,12 +64,34 @@ public class game{
 }
 
 
+// function for creating shuffled word
+public static char[] scramble( Random random, String inputString )
+{
+    // Convert your string into a simple char array:
+    char a[] = inputString.toCharArray();
+
+    // Scramble the letters using the standard Fisher-Yates shuffle, 
+    for( int i=0 ; i<a.length ; i++ )
+    {
+        int j = random.nextInt(a.length);
+        // Swap letters
+        char temp = a[i]; a[i] = a[j];  a[j] = temp;
+    }       
+
+    return a ;
+}
 
 
 
-
-
-
+// Convert String to Char method
+public static char[] conv(String s)
+{
+        char[] myChars = s.toCharArray();
+        for (int i=0; i<myChars.length; i++){
+            System.out.println(myChars[i]);
+        }
+return myChars ;
+	}
 
 
 
@@ -336,7 +339,7 @@ public class game{
     	boolean winner=true;
     	for(int x=0;x<fp1.getLength();x++)
     	{
-		if(gameboard1[x]=='_') //for loop and if statement to read the gameboard array and returns false if an underscore is found.
+		if(gameboard1[x] != fp1.getWord().charAt(x)) //for loop and if statement to read the gameboard array and returns false if an underscore is found.
 		{
 			winner=false;
 		}
