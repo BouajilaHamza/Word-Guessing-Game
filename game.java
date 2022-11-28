@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;	//importing jOptionPane, util package, and throw
 import java.util.*;
 import java.io.*;
 
+
 public class game{
 	//Declaring feilds
 	Procedure fp1;
@@ -20,12 +21,9 @@ public class game{
 	String let2;
 	int count1;
 	int count2;
-	char[] L;
+	char[] L1;
+	char[] L2;
 
-
-
-
-	
 	boolean playAgain;
 	String play;
 	int numTries;
@@ -36,42 +34,54 @@ public class game{
 
     public game()throws IOException
     {
-		fp1 = new Procedure();	//Procedure object player1
+    	fp1 = new Procedure();	//Procedure object player1
 		fp2 = new Procedure();	//Procedure object player2
 		gameboard1 = new char[fp1.getLength()];
 		gameboard2 = new char[fp2.getLength()];	//creating an array gameboard of chars
     	count1=0;
     	count2=0;
-		
+
 		playAgain=true;			//variable to test if user wants to play game again
 		numTries=0;
-		
-		for(int x=0;x<fp1.getLength();x++) 	//populatiing gameboard with _ characters of the length of the word.
-    	 {
-    	 	gameboard1[x]='_';
-		}
-		
-		for(int x=0;x<fp2.getLength();x++) 	//populatiing gameboard with _ characters of the length of the word.
-		{
-			gameboard2[x]='_';
-		}
-		
-		
-		//add shuffled list with letters of the right word
+
+		//add shuffled list for fp1 and fp2 with letters of the right word
+
+		//fp1
 		String word1=fp1.getWord();
-		List<String> letters = Arrays.asList(word1.split(""));
-		Collections.shuffle(letters);
-		String shuffled = "";
-	
+		List<String> letters1 = Arrays.asList(word1.split(""));
+		Collections.shuffle(letters1);
+		String shuffled1 = "";
+		for (String letter : letters1) {
+			shuffled1 += letter;}
+		char[] liste1=shuffled1.toCharArray();
+		L1=liste1;
+
+		//fp2
+		String word2=fp2.getWord();
+		List<String> letters2 = Arrays.asList(word2.split(""));
+		Collections.shuffle(letters2);
+		String shuffled2 = "";
+		for (String letter : letters2) {
+			shuffled1 += letter;}
+		char[] liste2=shuffled2.toCharArray();
+		L2=liste2;
+
+		
+    	  for(int x=0;x<fp1.getLength();x++) 	//populatiing gameboard with _ characters of the length of the word.
+    	 {
+    	 	L1[x]='_';
+    	 }
+
+		 for(int x=0;x<fp2.getLength();x++) 	//populatiing gameboard with _ characters of the length of the word.
+    	 {
+    	 	L2[x]='_';
+    	 }
+    
 
 
-		for (String letter : letters) {
-			shuffled += letter;}
-		char[] liste=shuffled.toCharArray();
-		L=liste; 
-	   }
-		
-		
+	  
+}
+
 
 
 
