@@ -46,6 +46,7 @@ public class game{
 
 		//add shuffled list for fp1 and fp2 with letters of the right word
 
+		
 		//fp1
 		String word1=fp1.getWord();
 		List<String> letters1 = Arrays.asList(word1.split(""));
