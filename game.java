@@ -19,6 +19,7 @@ public class game{
 	String let2;
 	int count1;
 	int count2;
+	char[] L;
 
 
 
@@ -34,27 +35,40 @@ public class game{
 
     public game()throws IOException
     {
-    	fp1 = new Procedure();	//Procedure object player1
+		fp1 = new Procedure();	//Procedure object player1
 		fp2 = new Procedure();	//Procedure object player2
 		gameboard1 = new char[fp1.getLength()];
 		gameboard2 = new char[fp2.getLength()];	//creating an array gameboard of chars
     	count1=0;
     	count2=0;
-
+		
 		playAgain=true;			//variable to test if user wants to play game again
 		numTries=0;
-
-    	  for(int x=0;x<fp1.getLength();x++) 	//populatiing gameboard with _ characters of the length of the word.
+		
+		for(int x=0;x<fp1.getLength();x++) 	//populatiing gameboard with _ characters of the length of the word.
     	 {
     	 	gameboard1[x]='_';
-    	 }
-
-		 for(int x=0;x<fp2.getLength();x++) 	//populatiing gameboard with _ characters of the length of the word.
-    	 {
-    	 	gameboard2[x]='_';
-    	 }
-    }
-
+		}
+		
+		for(int x=0;x<fp2.getLength();x++) 	//populatiing gameboard with _ characters of the length of the word.
+		{
+			gameboard2[x]='_';
+		}
+		
+		
+		//add shuffled list with letters of the right word
+		String word1=fp1.getWord();
+		List<String> letters = Arrays.asList(word1.split(""));
+		Collections.shuffle(letters);
+		String shuffled = "";
+	
+		for (String letter : letters) {
+			shuffled += letter;}
+		char[] liste=shuffled.toCharArray();
+		L=liste; 
+	   }
+		
+		
 
 
 
