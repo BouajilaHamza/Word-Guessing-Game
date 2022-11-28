@@ -62,6 +62,8 @@ public class game{
 		Collections.shuffle(letters);
 		String shuffled = "";
 	
+
+		
 		for (String letter : letters) {
 			shuffled += letter;}
 		char[] liste=shuffled.toCharArray();
