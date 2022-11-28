@@ -10,6 +10,7 @@ public class game{
 	Procedure fp1;
 	Procedure fp2;
 
+	
 	char [] gameboard1;
 	char [] gameboard2;
 	char l1;
@@ -44,8 +45,7 @@ public class game{
 		numTries=0;
 
 		//add shuffled list for fp1 and fp2 with letters of the right word
-		
-		
+
 		//fp1
 		String word1=fp1.getWord();
 		List<String> letters1 = Arrays.asList(word1.split(""));
@@ -55,6 +55,7 @@ public class game{
 			shuffled1 += letter;}
 		char[] liste1=shuffled1.toCharArray();
 		L1=liste1;
+
 		//fp2
 		String word2=fp2.getWord();
 		List<String> letters2 = Arrays.asList(word2.split(""));
@@ -64,7 +65,6 @@ public class game{
 			shuffled1 += letter;}
 		char[] liste2=shuffled2.toCharArray();
 		L2=liste2;
-
 
 		
     	  for(int x=0;x<fp1.getLength();x++) 	//populatiing gameboard with _ characters of the length of the word.
@@ -80,7 +80,7 @@ public class game{
 
 
 	  
-	}
+}
 
 
 
