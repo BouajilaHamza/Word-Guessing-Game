@@ -19,6 +19,7 @@ public class game{
 	String let2;
 	int count1;
 	int count2;
+	char[] L;
 
 	boolean playAgain;
 	String play;
@@ -49,7 +50,20 @@ public class game{
     	 {
     	 	gameboard2[x]='_';
     	 }
-    }
+    
+
+
+	 //add shuffled list with letters of the right word
+	 String word1=fp1.getWord();
+	 List<String> letters = Arrays.asList(word1.split(""));
+	 Collections.shuffle(letters);
+	 String shuffled = "";
+
+	 for (String letter : letters) {
+		 shuffled += letter;}
+	 char[] liste=shuffled.toCharArray();
+	 L=liste; 
+	}
 
 
 
