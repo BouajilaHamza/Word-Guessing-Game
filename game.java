@@ -44,7 +44,7 @@ public class game{
 		numTries=0;
 
 		//add shuffled list for fp1 and fp2 with letters of the right word
-
+		
 		
 		//fp1
 		String word1=fp1.getWord();
