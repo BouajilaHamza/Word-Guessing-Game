@@ -9,6 +9,7 @@ public class game{
 	Procedure fp1;
 	Procedure fp2;
 
+	
 	char [] gameboard1;
 	char [] gameboard2;
 	char l1;
@@ -63,7 +64,7 @@ public class game{
 		String shuffled = "";
 	
 
-		
+
 		for (String letter : letters) {
 			shuffled += letter;}
 		char[] liste=shuffled.toCharArray();
