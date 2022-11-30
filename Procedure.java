@@ -15,7 +15,6 @@ public class Procedure
     public Procedure() throws IOException	//CONSTRUCTOR
     {
     	array = new String[10];		//creating a new string array
-    	array1 = new String[10];
 		getFile();					//calling the getFile and random methods
     	random();
 
@@ -75,12 +74,8 @@ public class Procedure
 				array[x]=inputFile.nextLine();	//populating array with random words from file.
 			}
 		}
-		try (Scanner inputFile = new Scanner(file)) {
-			for(int y=0;y<array1.length;y++)
-			{
-				array1[y]=inputFile.nextLine();	//populating array with random words from file.
-			}
-		}
+	
+		
 
 
 
@@ -91,9 +86,7 @@ public class Procedure
 	{
 		Random random = new Random();		//creating random word object
 		int randomNum =random.nextInt(array.length); //getting a random number based on length of array
-		int randomNum1 =random.nextInt(array1.length);
-		word1 = array[randomNum];
-		word2 = array1[randomNum1]; //getting a random word from array and storing in varaible word
+		word1 = array[randomNum]; //getting a random word from array and storing in varaible word
 
 	}
 
@@ -110,7 +103,5 @@ public class Procedure
 		return word1 ;
 	}
 
-	public String getWords()			//get the word and returns a string
-	{
-		return word1 + word2 ;
-	}}
+
+}
