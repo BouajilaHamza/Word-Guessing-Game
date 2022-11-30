@@ -8,38 +8,27 @@ import java.io.*;
 public class game{
 	//Declaring feilds
 	Procedure fp1;
-	Procedure fp2;
 
 	
 	char [] gameboard1;
-	char [] gameboard2;
+
 	char l1;
-	char l2 ;
 	String s1;
-	String s2;
 	String let1;
-	String let2;
 	int count1;
-	int count2;
 	char[] L1;
-	char[] L2;
 
 	boolean playAgain;
 	String play;
 	int numTries;
 	int highscore;
 	int scorep1 ;
-	int scorep2;
-	int nbtry ;
 	Random r  = new Random();
     public game()throws IOException
     {
     	fp1 = new Procedure();	//Procedure object player1
-		fp2 = new Procedure();	//Procedure object player2
 		gameboard1 = new char[12];
-		gameboard2 = new char[fp2.getLength()];	//creating an array gameboard of chars
     	count1=0;
-    	count2=0;
 
 		playAgain=true;			//variable to test if user wants to play game again
 		numTries=0;
@@ -57,6 +46,8 @@ public class game{
 			{
 				if(fp1.getWord().length() < 12)
 				{
+					System.out.print(scramble(r, fp1.getWord()) + " | ");
+					System.out.println(generate(fp1.getWord()) + " | ");
 					gameboard1[x] = scramble(r, fp1.getWord().concat(generate(fp1.getWord())))[x];
 				}
 				else 
@@ -64,14 +55,10 @@ public class game{
 					gameboard1[x] = scramble(r, fp1.getWord().substring(0, 12))[x];
 				}
 			}
+			System.out.println("----------------------");
 			System.out.println(gameboard1[x]);
 		}
 
-		//  for(int x=0;x<fp2.getLength();x++) 	//populatiing gameboard with _ characters of the length of the word.
-    	//  {
-		// 	gameboard2[x] = scramble(r, fp2.getWord())[x] ;
-		// }
-    
 
 
 	  
@@ -85,7 +72,7 @@ public static char[] scramble( Random random, String inputString )
     char a[] = inputString.toCharArray();
 
     // Scramble the letters using the standard Fisher-Yates shuffle, 
-    for( int i=0 ; i<a.length - 14 ; i++ )
+    for( int i=0 ; i<a.length; i++ )
     {
         int j = random.nextInt(a.length);
         // Swap letters
@@ -99,11 +86,11 @@ public static char[] scramble( Random random, String inputString )
 
 
 public String generate(String w)
-{String f = "aqwzsxedcrfvtgbyhnujikolpm";
-String g ="";
-for(int i = 0 ;i<12- w.length(); i++)
 {
- g+=scramble(r,f)[i] ;
+String g ="";
+for(int i = 0 ;i <12- w.length(); i++)
+{
+ g+=scramble(r,w)[i] ;
 }
 	return g;
 }
@@ -116,51 +103,10 @@ for(int i = 0 ;i<12- w.length(); i++)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	public void playGamep1()throws IOException		//game method
     {
 
-		JOptionPane.showMessageDialog(null,"   Player 1  ");
+		// JOptionPane.showMessageDialog(null,"   Player 1  ");
 
     	// while(playAgain==true)		//user will be prompted to if wants to playagain if user does not playAgain will = false
     	// {
@@ -169,7 +115,7 @@ for(int i = 0 ;i<12- w.length(); i++)
     	while(game1Won()!=true) //test variables to keep getting usres input until guesses wrong four times or completes word
     	{
     		getLetter1();		//calls getLetter methods
-    		// testLetter1();		//calls testLetter methods
+    		testLetter1();		//calls testLetter methods
     	}
     	if (game1Won()==true)	//determines if user wins
     	{
@@ -224,197 +170,22 @@ for(int i = 0 ;i<12- w.length(); i++)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	public void playGamep2()throws IOException		//game method
-    {
-
-
-    	// while(playAgain==true)		//user will be prompted to if wants to playagain if user does not playAgain will = false
-    	// {
-
-    	JOptionPane.showMessageDialog(null,"   Player 2 ");
-
-    	while(count2<4 && game2Won()!=true) //test variables to keep getting usres input until guesses wrong four times or completes word
-    	{
-    		getLetter2();		//calls getLetter methods
-    		testLetter2();		//calls testLetter methods
-    	}
-    	if (game2Won()==true)	//determines if user wins
-    	{
-    		numTries++;		//keeps track of number of times user wins
-    		JOptionPane.showMessageDialog(null,"Congradulations you guessed the word!\n So far you have won " + numTries + " time(s)!");
-    	}
-    	if(count2>=4)		//test for number of tries
-    	{
-    		JOptionPane.showMessageDialog(null,"Sorry you ran out of guesses.\n The word was " + fp2.getWord());
-    	}
-
-
-    	// play= JOptionPane.showInputDialog("Type 'y' to play another game, anything else to quit");
-    	// if (play.compareToIgnoreCase("y")!=0) //testing users input whether wants to play again or not.
-    	// {
-    		playAgain=false;		//stops game method from playing again
-
-
-    		File file = new File("scores.txt");		//Extra credit highscore reading from scores file
-			try (Scanner inputFile = new Scanner(file)) {
-				highscore=Integer.parseInt(inputFile.nextLine());	//converting number from file into an integer
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			if(numTries>highscore)	//comparing the number the user won and the previous highscore
-				{
-		 		JOptionPane.showMessageDialog(null,"Congradulations! You broke the highscore with " + numTries + " win(s)!\n The previous record was " + highscore + ". ");
-		 		PrintWriter outputFile = new PrintWriter(file);	//PrintWriter object to replace number
-				outputFile.println(numTries); //replaces number with new highscore
-				outputFile.close(); //closes the file
-				}
-			JOptionPane.showMessageDialog(null, "You won " + numTries + " time(s)\nThanks for playing!\nCome again!");
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public boolean game1Won() throws IOException //method to test if user guessed every letter returns a boolean
     {
     	boolean winner=false;
     	// for(int x=0;x< 12;x++)
     	// {
-		if(!gameboard1.toString().contains(getLetter1())) ;//for loop and if statement to read the gameboard array and returns false if an underscore is found.
+		if(getLetter1().contains(fp1.getWord())) ;//for loop and if statement to read the gameboard array and returns false if an underscore is found.
 		{
+			System.out.println(gameboard1.toString() +" | ");
+			System.out.println(getLetter1());
 			System.out.println(!gameboard1.toString().contains(let1));
 			winner=true;
 		}
     	// }
 
     	return winner;
-    }
-
-
-
-
-	public boolean game2Won() throws IOException //method to test if user guessed every letter returns a boolean
-    {
-    	boolean winner=true;
-    	for(int x=0;x<fp2.getLength();x++)
-    	{
-		if(gameboard2[x]=='_') //for loop and if statement to read the gameboard array and returns false if an underscore is found.
-		{
-			winner=false;
-		}
-    	}
-    	return winner;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	}
 
 
 
@@ -435,6 +206,7 @@ for(int i = 0 ;i<12- w.length(); i++)
 		s1+="\nThere are " +fp1.getLength() + " letters in this word";
 
 		let1 = JOptionPane.showInputDialog(s1);
+		System.out.println(let1);
 
 		if(let1==null) //testing to see if user hit the cancel button
 		{
@@ -465,120 +237,41 @@ for(int i = 0 ;i<12- w.length(); i++)
 
 
 
-	public void getLetter2() //method to get users input of a letter
-	{
 
-		 s2= "Choose a letter to complete the word:\n";
+	public void testLetter1()		//tests the letter if it is found in the word and replaces that letter
+	{								// to the corresponding area on the gameboard
 
-		for(char str: gameboard2)
-		{
-		s2+=str + " ";											//PRINTING GAMEBOARD AND STORING STRING IN VARIALBE S
-		}
-		s2+="\nThere are " +fp2.getLength() + " letters in this word";
-
-		let2 = JOptionPane.showInputDialog(s2);
-
-		if(let2==null) //testing to see if user hit the cancel button
-		{
-		JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!");
-		System.exit(0);	//ends the program
-		}
-
-	while(let2.length()==0 || Character.isLetter(let2.charAt(0))== false)		//tests conditions of input whether input was eventered
-	{																		// or whether the input was a letter or not
-		JOptionPane.showMessageDialog(null,"Invalid answer!");
-		let2 = JOptionPane.showInputDialog(s2);
-		if(let2 ==null)											//testing to see if user hit the cancel button
-		{
-		JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!");
-		System.exit(0);
-		}
-
-	}
-		l2=let2.charAt(0);
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	// public void testLetter1()		//tests the letter if it is found in the word and replaces that letter
-	// {								// to the corresponding area on the gameboard
-
-	// 	// boolean letterword=false;			//boolean of whether word is in gameboard and replaces that letter on the gameboard
-	// 	// for(int x=0;x<fp1.getLength();x++)
-	// 	// {
-	// 		if(let1.contains(fp1.getWord()))
-	// 		{
-	// 			gameboard1 = let1.toCharArray();
-	// 			// letterword=true;
-	// 		}
+		// boolean letterword=false;			//boolean of whether word is in gameboard and replaces that letter on the gameboard
+		// for(int x=0;x<fp1.getLength();x++)
+		// {
+			if(getLetter1().contains(fp1.getWord()))
+			{
+				gameboard1 = getLetter1().toCharArray();
+				// letterword=true;
+			}
 
 		
 			
-	// 		// if(letterword==false)	//tests if letter was not in the word
-	// 		else{						//increments count if not
+			// if(letterword==false)	//tests if letter was not in the word
+			else{						//increments count if not
 				
-	// 		count1++;
-	// 		JOptionPane.showMessageDialog(null, let1 + " is not the word\nYou have " + (4-count1) + "  tries remaining" );
-	// 		}
-
-	// 	}
-
-
-
-
-
-
-
-
-
-
-
-
-		public void testLetter2()		//tests the letter if it is found in the word and replaces that letter
-	{								// to the corresponding area on the gameboard
-
-		boolean letterword=false;			//boolean of whether word is in gameboard and replaces that letter on the gameboard
-		for(int x=0;x<fp2.getLength();x++)
-		{
-			if(l2==(fp2.getWord().charAt(x)))
-			{
-				gameboard2[x]=l2;
-				letterword=true;
+			count1++;
+			JOptionPane.showMessageDialog(null, let1 + " is not the word\nYou have " + (4-count1) + "  tries remaining" );
 			}
-
-		}
-			if(letterword==false)	//tests if letter was not in the word
-			{						//increments count if not
-			count2++;
-			JOptionPane.showMessageDialog(null, l2 + " is not in the word\nYou have " + (4-count2) + "  tries remaining" );
-			}
-
-		}
-
-
-
 
 	}
+
+}
+
+
+
+
+
+
+
+
+
+
+		
 
 

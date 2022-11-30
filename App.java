@@ -14,14 +14,9 @@ public class App {
     //Calling welcome Screen
  	Procedure.message();
  	//Game object
-    //  int nbtry <  Integer.parseInt(tries) ;
     game g = new game();
-    // Game g1 = new Game();
-
     //Play game method
     g.playGamep1();
-    g.playGamep2();
-    // g1.playGame();
 
     }
 
