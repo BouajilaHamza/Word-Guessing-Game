@@ -7,7 +7,8 @@ public class Procedure
 {
 	//Declaring feilds
 	String [] array;
-	String word;
+	String word1;
+	// String word2 ;
 
 
     public Procedure() throws IOException	//CONSTRUCTOR
@@ -83,19 +84,21 @@ public class Procedure
 		Random random = new Random();		//creating random word object
 		int randomNum =random.nextInt(array.length); //getting a random number based on length of array
 
-		word = array[randomNum]; //getting a random word from array and storing in varaible word
+		word1 = array[randomNum];
+		// word2 = array[randomNum]; //getting a random word from array and storing in varaible word
 
 	}
 
 
 	public int getLength()			//gets length of word and returns and integer
 	{
-		return word.length();
+		// return word1.length() + word2.length();
+		return 12;
 	}
 
 
 	public String getWord()			//get the word and returns a string
 	{
-		return word;
+		return word1 ;
 	}
 }

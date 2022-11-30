@@ -36,7 +36,7 @@ public class game{
     {
     	fp1 = new Procedure();	//Procedure object player1
 		fp2 = new Procedure();	//Procedure object player2
-		gameboard1 = new char[fp1.getLength()];
+		gameboard1 = new char[12];
 		gameboard2 = new char[fp2.getLength()];	//creating an array gameboard of chars
     	count1=0;
     	count2=0;
@@ -47,16 +47,30 @@ public class game{
 		//add shuffled list for fp1 and fp2 with letters of the right word
 
 		
-		
-    	  for(int x=0;x<fp1.getLength() ;x++) 	//populatiing gameboard with _ characters of the length of the word.
+    	  for(int x=0;x<12 ;x++) 	//populatiing gameboard with _ characters of the length of the word.
     	 {
-    	 	gameboard1[x] = scramble(r, fp1.getWord())[x] ;
-    	 }
-
-		 for(int x=0;x<fp2.getLength();x++) 	//populatiing gameboard with _ characters of the length of the word.
-    	 {
-			gameboard2[x] = scramble(r, fp2.getWord())[x] ;
+			if (fp1.getWord().length() == 12)
+			{ 
+	   	 	gameboard1[x] = scramble(r, fp1.getWord())[x] ;
+			}    	 
+			else 
+			{
+				if(fp1.getWord().length() < 12)
+				{
+					gameboard1[x] = scramble(r, fp1.getWord().concat(generate(fp1.getWord())))[x];
+				}
+				else 
+				{
+					gameboard1[x] = scramble(r, fp1.getWord().substring(0, 12))[x];
+				}
+			}
+			System.out.println(gameboard1[x]);
 		}
+
+		//  for(int x=0;x<fp2.getLength();x++) 	//populatiing gameboard with _ characters of the length of the word.
+    	//  {
+		// 	gameboard2[x] = scramble(r, fp2.getWord())[x] ;
+		// }
     
 
 
@@ -71,7 +85,7 @@ public static char[] scramble( Random random, String inputString )
     char a[] = inputString.toCharArray();
 
     // Scramble the letters using the standard Fisher-Yates shuffle, 
-    for( int i=0 ; i<a.length ; i++ )
+    for( int i=0 ; i<a.length - 14 ; i++ )
     {
         int j = random.nextInt(a.length);
         // Swap letters
@@ -83,19 +97,16 @@ public static char[] scramble( Random random, String inputString )
 
 
 
-// Convert String to Char method
-public static char[] conv(String s)
+
+public String generate(String w)
+{String f = "aqwzsxedcrfvtgbyhnujikolpm";
+String g ="";
+for(int i = 0 ;i<12- w.length(); i++)
 {
-        char[] myChars = s.toCharArray();
-        for (int i=0; i<myChars.length; i++){
-            System.out.println(myChars[i]);
-        }
-return myChars ;
-	}
-
-
-
-
+ g+=scramble(r,f)[i] ;
+}
+	return g;
+}
 
 
 
@@ -155,10 +166,10 @@ return myChars ;
     	// {
 
 
-    	while(count1<4 && game1Won()!=true) //test variables to keep getting usres input until guesses wrong four times or completes word
+    	while(game1Won()!=true) //test variables to keep getting usres input until guesses wrong four times or completes word
     	{
     		getLetter1();		//calls getLetter methods
-    		testLetter1();		//calls testLetter methods
+    		// testLetter1();		//calls testLetter methods
     	}
     	if (game1Won()==true)	//determines if user wins
     	{
@@ -336,18 +347,18 @@ return myChars ;
 
     public boolean game1Won() throws IOException //method to test if user guessed every letter returns a boolean
     {
-    	boolean winner=true;
-    	for(int x=0;x<fp1.getLength();x++)
-    	{
-		if(gameboard1[x] != fp1.getWord().charAt(x)) //for loop and if statement to read the gameboard array and returns false if an underscore is found.
+    	boolean winner=false;
+    	// for(int x=0;x< 12;x++)
+    	// {
+		if(!gameboard1.toString().contains(getLetter1())) ;//for loop and if statement to read the gameboard array and returns false if an underscore is found.
 		{
-			winner=false;
+			System.out.println(!gameboard1.toString().contains(let1));
+			winner=true;
 		}
-    	}
+    	// }
+
     	return winner;
     }
-
-
 
 
 
@@ -412,7 +423,7 @@ return myChars ;
 
 
 
-	public void getLetter1() //method to get users input of a letter
+	public String getLetter1() //method to get users input of a letter
 	{
 
 		 s1= "Choose a letter to complete the word:\n";
@@ -443,6 +454,7 @@ return myChars ;
 
 	}
 		l1=let1.charAt(0);
+		return let1;
 	}
 
 
@@ -509,26 +521,28 @@ return myChars ;
 
 
 
-	public void testLetter1()		//tests the letter if it is found in the word and replaces that letter
-	{								// to the corresponding area on the gameboard
+	// public void testLetter1()		//tests the letter if it is found in the word and replaces that letter
+	// {								// to the corresponding area on the gameboard
 
-		boolean letterword=false;			//boolean of whether word is in gameboard and replaces that letter on the gameboard
-		for(int x=0;x<fp1.getLength();x++)
-		{
-			if(l1==(fp1.getWord().charAt(x)))
-			{
-				gameboard1[x]=l1;
-				letterword=true;
-			}
+	// 	// boolean letterword=false;			//boolean of whether word is in gameboard and replaces that letter on the gameboard
+	// 	// for(int x=0;x<fp1.getLength();x++)
+	// 	// {
+	// 		if(let1.contains(fp1.getWord()))
+	// 		{
+	// 			gameboard1 = let1.toCharArray();
+	// 			// letterword=true;
+	// 		}
 
-		}
-			if(letterword==false)	//tests if letter was not in the word
-			{						//increments count if not
-			count1++;
-			JOptionPane.showMessageDialog(null, l1 + " is not in the word\nYou have " + (4-count1) + "  tries remaining" );
-			}
+		
+			
+	// 		// if(letterword==false)	//tests if letter was not in the word
+	// 		else{						//increments count if not
+				
+	// 		count1++;
+	// 		JOptionPane.showMessageDialog(null, let1 + " is not the word\nYou have " + (4-count1) + "  tries remaining" );
+	// 		}
 
-		}
+	// 	}
 
 
 
