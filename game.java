@@ -43,18 +43,13 @@ public class game
 				}    	 
 			else if(s.length() < 12)
 				{
-				
-				
-					System.out.println(s);
-					// System.out.print(scramble(r, s)[x] + " | ");System.out.println(generate(s) + " | ");
 					gameboard1[x] = scramble(r,(s+s2).concat(g1))[x];
 				}
 			else 
 				{
 					gameboard1[x] = scramble(r, (s).substring(0, 12))[x];
 				}
-			System.out.println("----------------------");
-			System.out.println(gameboard1[x]);
+			
 		}
 
 		for(int y=0;y<12 ;y++) 	//populatiing gameboard with _ characters of the length of the word.
@@ -65,18 +60,12 @@ public class game
 				}    	 
 			else if(s2.length() < 12)
 				{
-				
-				
-					System.out.println(s+s2);
-					// System.out.print(scramble(r, s)[y] + " | ");System.out.println(generate(s) + " | ");
 					gameboard2[y] = scramble(r,(s+s2).concat(g2))[y];
 				}
 			else 
 				{
 					gameboard2[y] = scramble(r, (s2).substring(0, 12))[y];
 				}
-			System.out.println("----------------------");
-			System.out.println(gameboard2[y]);
 		}	}
 	
 
@@ -130,7 +119,6 @@ public char[] scramble( Random random, String inputString )
 		s1+="\nThere are " + fp1.getLength() + " letters in this word" ;
 
 		let1 = JOptionPane.showInputDialog(s1);
-		System.out.println(let1);
 
 		if(let1==null) //testing to see if user hit the cancel button
 		{
@@ -149,9 +137,8 @@ public char[] scramble( Random random, String inputString )
 		}
 
 	}
-	// for(int x=0;x<12;x++)
-	// {
-		// gameboard1[x] = " ";
+
+	
 		if(let1.equals(fp1.getWord()))
 		{
 			for(int i =0 ; i < let1.length() ;i++)
@@ -159,14 +146,12 @@ public char[] scramble( Random random, String inputString )
 				gameboard1[i] = let1.toCharArray()[i];
 			}
 			JOptionPane.showMessageDialog(null,"\t\tGood Job !!\n" + fp1.getWord() + " is the right word !!\nCongradulations you guessed the word!\n So far you have won " + numTries1 + " time(s)!");
-			// System.exit(0);
 		}
 
 	
 		
 		else	//tests if letter was not in the word
 		{	
-			// count1 = 0 ;
 			while(count1 != 4 && !let1.equals(fp1.getWord()) )
 			{
 			count1++;
@@ -175,12 +160,10 @@ public char[] scramble( Random random, String inputString )
 			if(count1 == 4)
 			{
 				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! ");
-				// System.exit(0);
 			}
 }
 		}
 
-	// }
 	
 
 
@@ -205,7 +188,6 @@ public void playGamep2()throws IOException		//game method
 		s2+="\nThere are " + fp2.getLength() + " letters in this word" ;
 
 		let2 = JOptionPane.showInputDialog(s2);
-		System.out.println(let2);
 
 		if(let2==null) //testing to see if user hit the cancel button
 		{
@@ -224,9 +206,8 @@ public void playGamep2()throws IOException		//game method
 		}
 
 	}
-	// for(int x=0;x<12;x++)
-	// {
-		// gameboard2[x] = " ";
+	
+	
 		if(let2.equals(fp2.getWord()))
 		{
 			for(int i =0 ; i < let2.length() ;i++)
@@ -241,7 +222,6 @@ public void playGamep2()throws IOException		//game method
 		
 		else	//tests if letter was not in the word
 		{	
-			// count1 = 0 ;
 			while(count2 != 4 && !let2.equals(fp2.getWord()) )
 			{
 			count2++;
