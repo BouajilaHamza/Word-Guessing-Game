@@ -127,7 +127,6 @@ public char[] scramble( Random random, String inputString )
 		}
 
 	}
-	boolean letterword=false;			//boolean of whether word is in gameboard and replaces that letter on the gameboard
 	for(int x=0;x<12;x++)
 	{
 		// gameboard1[x] = " ";
@@ -137,20 +136,26 @@ public char[] scramble( Random random, String inputString )
 			{
 				gameboard1[i] = let1.toCharArray()[i];
 			}
-			letterword=true;
-			JOptionPane.showMessageDialog(null,"Good Job !!" + fp1.getWord() + " is the right word !!");
+			JOptionPane.showMessageDialog(null,"\t\tGood Job !!\n" + fp1.getWord() + " is the right word !!\nCongradulations you guessed the word!\n So far you have won " + numTries + " time(s)!");
 			System.exit(0);
 		}
 
 	
 		
 		else	//tests if letter was not in the word
-		{	count1 = 0 ;
+		{	
+			// count1 = 0 ;
 			while(count1 != 4 && !let1.equals(fp1.getWord()) )
+			{
 			count1++;
 			JOptionPane.showMessageDialog(null, let1 + " is not the word\nYou have " + (4-count1) + "  tries remaining" );
 			let1 = JOptionPane.showInputDialog(s1);
-
+			if(count1 == 4)
+			{
+				JOptionPane.showMessageDialog(null,"You are out of Tries , Good Luck next Time !! ");
+				System.exit(0);
+			}
+}
 		}
 
 	}
@@ -158,7 +163,7 @@ public char[] scramble( Random random, String inputString )
 	boolean winner=true;
 	if(let1.equals(wrd)) ;//for loop and if statement to read the gameboard array and returns false if an underscore is found.
 	{
-		System.out.println(gameboard1.toString() +" | ");System.out.println(inputword());
+		System.out.println(gameboard1.toString() +" | ");System.out.println(let1);
 		System.out.println(let1.equals(wrd));
 		winner=false;
 		JOptionPane.showMessageDialog(null,"You have guessed the Word ");
@@ -170,7 +175,7 @@ public char[] scramble( Random random, String inputString )
 			if (winner ==true)	//determines if user wins
     		{
 				System.out.println(let1);
-				updateboard(let1);		//calls testLetter methods
+				// updateboard(let1);		//calls testLetter methods
 				JOptionPane.showMessageDialog(null,"Congradulations you guessed the word!\n So far you have won " + numTries + " time(s)!");
 
     			// numTries++;		//keeps track of number of times user wins
@@ -184,102 +189,7 @@ public char[] scramble( Random random, String inputString )
     }
 
 
-	}
-
-    public boolean game1Won(String a1 ) throws IOException //method to test if user guessed every letter returns a boolean
-    {
-		String wrd = fp1.getWord();
-    	boolean winner=true;
-		if(a1.equals(wrd)) ;//for loop and if statement to read the gameboard array and returns false if an underscore is found.
-		{
-			System.out.println(gameboard1.toString() +" | ");System.out.println(inputword());
-			System.out.println(a1.equals(wrd));
-			winner=false;
-			JOptionPane.showMessageDialog(null,"You have guessed the Word ");
-			System.exit(0);
-		}
-    	// }
-
-    	return winner;
-	}
-
-
-
-
-
-
-
-
-	public String inputword() //method to get users input of a letter
-	{
-
-		s1= "Choose a letter to complete the word:\n";
-
-		for(char str: gameboard1)
-		{
-		s1+=str + " ";											//PRINTING GAMEBOARD AND STORING STRING IN VARIALBE S
-		}
-		s1+="\nThere are " + fp1.getLength() + " letters in this word" ;
-
-		let1 = JOptionPane.showInputDialog(s1);
-		System.out.println(let1);
-
-		if(let1==null) //testing to see if user hit the cancel button
-		{
-		JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!");
-		System.exit(0);	//ends the program
-		}
-
-	while(let1.length()==0 || Character.isLetter(let1.charAt(0))== false)		//tests conditions of input whether input was eventered
-	{																		// or whether the input was a letter or not
-		JOptionPane.showMessageDialog(null,"Invalid answer!");
-		let1 = JOptionPane.showInputDialog(s1);
-		if(let1==null)											//testing to see if user hit the cancel button
-		{
-		JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!");
-		System.exit(0);
-		}
-
-	}
-		// l1=let1.charAt(0);
-		return let1;
-	}
-
-
-
-
-
-
-
-
-
-
-	public void updateboard(String a1)		//tests the letter if it is found in the word and replaces that letter
-	{								// to the corresponding area on the gameboard
-		boolean letterword=false;			//boolean of whether word is in gameboard and replaces that letter on the gameboard
-		for(int x=0;x<12;x++)
-		{
-			gameboard1[x] = " ".toCharArray()[x];
-			if(a1.equals(fp1.getWord()))
-			{
-				for(int i =0 ; i < a1.length() ;i++)
-				{
-					gameboard1[i] = a1.toCharArray()[i];
-				}
-				letterword=true;
-			}
-
-		
-			
-			if(letterword==false)	//tests if letter was not in the word
-			{	
-				count1++;
-				JOptionPane.showMessageDialog(null, let1 + " is not the word\nYou have " + (4-count1) + "  tries remaining" );
-			}
-
-		}
-	}
-
+}
 }
 
 
@@ -289,8 +199,4 @@ public char[] scramble( Random random, String inputString )
 
 
 
-
-
-		
-
-
+	
