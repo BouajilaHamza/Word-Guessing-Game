@@ -12,6 +12,7 @@ public class App {
     game g = new game();
     //Play game method
     g.playGamep1();
+    g.playGamep2();
 
     }
 

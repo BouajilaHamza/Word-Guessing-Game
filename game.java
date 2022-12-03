@@ -7,32 +7,34 @@ import java.io.*;
 public class game
 {
 	//Declaring feilds
-	Procedure fp1;	
-	char [] gameboard1;
-	char l1;
-	String s1;
-	String let1;
-	int count1;
+	Procedure fp2;	Procedure fp1;
+	char [] gameboard1;   char [] gameboard2;
+	char l1; char l2 ;
+	String s1;  String s2 ;
+	String let1;  String let2 ;
+	int count1; int count2 ;
 	char[] L1;
 	// String a1 = inputword();
 	boolean playAgain;
 	String play;
-	int numTries;
+	int numTries1; int numTries2;
 	int highscore;
-	int scorep1 ;
+	int scorep1 ;   int scorep2 ;
 	Random r  = new Random();
 	// boolean w = game1Won(a1);
     public game()throws IOException
     {
-    	fp1 = new Procedure();	//Procedure object player1
-		gameboard1 = new char[12];
-    	count1=0;
+    	fp1 = new Procedure();fp2 = new Procedure();	//Procedure object player1
+		gameboard1 = new char[12];gameboard2 = new char[12];
+    	count1=0;count2 = 0 ;
 		playAgain=true;			//variable to test if user wants to play game again
-		numTries=0;
+		numTries1=0;numTries2=0;
 		
 		String s =  fp1.getWord();
-		String s2 = fp1.getWord();
-		String g = generate(s+s2) ;
+		String s2 = fp2.getWord();
+		String g1 = generate(s+s2) ;
+		String g2 = generate(s+s2) ;
+
     	  for(int x=0;x<12 ;x++) 	//populatiing gameboard with _ characters of the length of the word.
     	{
 			if (s.length() == 12)
@@ -45,17 +47,37 @@ public class game
 				
 					System.out.println(s);
 					// System.out.print(scramble(r, s)[x] + " | ");System.out.println(generate(s) + " | ");
-					gameboard1[x] = scramble(r,(s+s2).concat(g))[x];
+					gameboard1[x] = scramble(r,(s+s2).concat(g1))[x];
 				}
 			else 
 				{
-					gameboard1[x] = scramble(r, (s+s2).substring(0, 12))[x];
+					gameboard1[x] = scramble(r, (s).substring(0, 12))[x];
 				}
 			System.out.println("----------------------");
 			System.out.println(gameboard1[x]);
 		}
-	//  String a1 = inputword();
-	}
+
+		for(int y=0;y<12 ;y++) 	//populatiing gameboard with _ characters of the length of the word.
+    	{
+			if (s2.length() == 12)
+				{ 
+	   	 			gameboard2[y] = scramble(r, s+s2)[y] ;
+				}    	 
+			else if(s2.length() < 12)
+				{
+				
+				
+					System.out.println(s+s2);
+					// System.out.print(scramble(r, s)[y] + " | ");System.out.println(generate(s) + " | ");
+					gameboard2[y] = scramble(r,(s+s2).concat(g2))[y];
+				}
+			else 
+				{
+					gameboard2[y] = scramble(r, (s2).substring(0, 12))[y];
+				}
+			System.out.println("----------------------");
+			System.out.println(gameboard2[y]);
+		}	}
 	
 
 
@@ -97,7 +119,7 @@ public char[] scramble( Random random, String inputString )
 	public void playGamep1()throws IOException		//game method
     {
 
-		// JOptionPane.showMessageDialog(null,"   Player 1  ");
+		JOptionPane.showMessageDialog(null,"   Player 1  ");
 
     	s1= "Choose a letter to complete the word:\n";
 
@@ -127,8 +149,8 @@ public char[] scramble( Random random, String inputString )
 		}
 
 	}
-	for(int x=0;x<12;x++)
-	{
+	// for(int x=0;x<12;x++)
+	// {
 		// gameboard1[x] = " ";
 		if(let1.equals(fp1.getWord()))
 		{
@@ -136,8 +158,8 @@ public char[] scramble( Random random, String inputString )
 			{
 				gameboard1[i] = let1.toCharArray()[i];
 			}
-			JOptionPane.showMessageDialog(null,"\t\tGood Job !!\n" + fp1.getWord() + " is the right word !!\nCongradulations you guessed the word!\n So far you have won " + numTries + " time(s)!");
-			System.exit(0);
+			JOptionPane.showMessageDialog(null,"\t\tGood Job !!\n" + fp1.getWord() + " is the right word !!\nCongradulations you guessed the word!\n So far you have won " + numTries1 + " time(s)!");
+			// System.exit(0);
 		}
 
 	
@@ -148,49 +170,98 @@ public char[] scramble( Random random, String inputString )
 			while(count1 != 4 && !let1.equals(fp1.getWord()) )
 			{
 			count1++;
-			JOptionPane.showMessageDialog(null, let1 + " is not the word\nYou have " + (4-count1) + "  tries remaining" );
+			JOptionPane.showMessageDialog(null, let1 + " is not the word\nYou have " + (4-count1) + "  attempts remaing" );
 			let1 = JOptionPane.showInputDialog(s1);
 			if(count1 == 4)
 			{
-				JOptionPane.showMessageDialog(null,"You are out of Tries , Good Luck next Time !! ");
-				System.exit(0);
+				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! ");
+				// System.exit(0);
 			}
 }
 		}
 
-	}
-	String wrd = fp1.getWord();
-	boolean winner=true;
-	if(let1.equals(wrd)) ;//for loop and if statement to read the gameboard array and returns false if an underscore is found.
-	{
-		System.out.println(gameboard1.toString() +" | ");System.out.println(let1);
-		System.out.println(let1.equals(wrd));
-		winner=false;
-		JOptionPane.showMessageDialog(null,"You have guessed the Word ");
-		System.exit(0);
-
-    	while(winner != true) //test variables to keep getting usres input until guesses wrong four times or completes word
-    	{
-			
-			if (winner ==true)	//determines if user wins
-    		{
-				System.out.println(let1);
-				// updateboard(let1);		//calls testLetter methods
-				JOptionPane.showMessageDialog(null,"Congradulations you guessed the word!\n So far you have won " + numTries + " time(s)!");
-
-    			// numTries++;		//keeps track of number of times user wins
-				break;
-    		}
-
-		}
-
+	// }
+	
 
 
     }
 
 
+
+
+
+
+public void playGamep2()throws IOException		//game method
+    {
+
+		JOptionPane.showMessageDialog(null,"   Player 2  ");
+
+    	s2= "Choose a letter to complete the word:\n";
+
+		for(char str: gameboard2)
+		{
+		s2+=str + " ";											//PRINTING GAMEBOARD AND STORING STRING IN VARIALBE S
+		}
+		s2+="\nThere are " + fp2.getLength() + " letters in this word" ;
+
+		let2 = JOptionPane.showInputDialog(s2);
+		System.out.println(let2);
+
+		if(let2==null) //testing to see if user hit the cancel button
+		{
+		JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!");
+		System.exit(0);	//ends the program
+		}
+
+	while(let2.length()==0 || Character.isLetter(let2.charAt(0))== false)		//tests conditions of input whether input was eventered
+	{																		// or whether the input was a letter or not
+		JOptionPane.showMessageDialog(null,"Invalid answer!");
+		let2 = JOptionPane.showInputDialog(s2);
+		if(let2==null)											//testing to see if user hit the cancel button
+		{
+		JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!");
+		System.exit(0);
+		}
+
+	}
+	// for(int x=0;x<12;x++)
+	// {
+		// gameboard2[x] = " ";
+		if(let2.equals(fp2.getWord()))
+		{
+			for(int i =0 ; i < let2.length() ;i++)
+			{
+				gameboard2[i] = let2.toCharArray()[i];
+			}
+			JOptionPane.showMessageDialog(null,"\t\tGood Job !!\n" + fp2.getWord() + " is the right word !!\nCongradulations you guessed the word!\n So far you have won " + numTries2 + " time(s)!");
+			System.exit(0);
+		}
+
+	
+		
+		else	//tests if letter was not in the word
+		{	
+			// count1 = 0 ;
+			while(count2 != 4 && !let2.equals(fp2.getWord()) )
+			{
+			count2++;
+			JOptionPane.showMessageDialog(null, let2 + " is not the word\nYou have " + (4-count2) + "  attempts remaing" );
+			let2 = JOptionPane.showInputDialog(s2);
+			if(count2 == 4)
+				{
+				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! ");
+				System.exit(0);
+				}
+			}
+		}
+
+	}
+	
 }
-}
+
+
+
+
 
 
 
