@@ -93,8 +93,8 @@ public class Procedure
 
 	public int getLength()			//gets length of word and returns and integer
 	{
-		// return word1.length() + word2.length();
-		return 12;
+		return word1.length();
+		// return 12;
 	}
 
 
