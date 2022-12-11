@@ -10,7 +10,10 @@ public class game{
 	Procedure fp1;
 	Procedure fp2;
 
-	
+	String gameboard11;
+	String gameboard22;
+	char [] wordList1;
+	char [] wordList2;
 	char [] gameboard1;
 	char [] gameboard2;
 	char l1;
@@ -49,13 +52,16 @@ public class game{
 		
 		
     	  for(int x=0;x<fp1.getLength() ;x++) 	//populatiing gameboard with _ characters of the length of the word.
-    	 {
-    	 	gameboard1[x] = scramble(r, fp1.getWord())[x] ;
+    	 {  gameboard11=scramble(r, fp1.getWord()) ;
+    	 	wordList1= gameboard11.toCharArray();
+			 gameboard1[x]=wordList1[x];
     	 }
 
 		 for(int x=0;x<fp2.getLength();x++) 	//populatiing gameboard with _ characters of the length of the word.
     	 {
-			gameboard2[x] = scramble(r, fp2.getWord())[x] ;
+			gameboard22=scramble(r, fp2.getWord()) ;
+    	 	wordList2= gameboard22.toCharArray();
+			gameboard2[x]=wordList2[x];
 		}
     
 
@@ -65,7 +71,7 @@ public class game{
 
 
 // function for creating shuffled word
-public static char[] scramble( Random random, String inputString )
+public static String scramble( Random random, String inputString )
 {
     // Convert your string into a simple char array:
     char a[] = inputString.toCharArray();
@@ -75,10 +81,14 @@ public static char[] scramble( Random random, String inputString )
     {
         int j = random.nextInt(a.length);
         // Swap letters
-        char temp = a[i]; a[i] = a[j];  a[j] = temp;
+		
+        char temp = a[i]; 
+		a[i] = a[j];  
+		a[j] = temp;
+	
     }       
 
-    return a ;
+    return new String(a) ;
 }
 
 
@@ -517,7 +527,7 @@ return myChars ;
 		{
 			if(l1==(fp1.getWord().charAt(x)))
 			{
-				gameboard1[x]=l1;
+				//gameboard1[x]=l1;
 				letterword=true;
 			}
 
@@ -549,7 +559,7 @@ return myChars ;
 		{
 			if(l2==(fp2.getWord().charAt(x)))
 			{
-				gameboard2[x]=l2;
+				//gameboard2[x]=l2;
 				letterword=true;
 			}
 
