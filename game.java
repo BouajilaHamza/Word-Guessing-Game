@@ -150,7 +150,8 @@ public char[] scramble( Random random, String inputString )
 			{
 				gameboard1[i] = let1.toCharArray()[i];
 			}
-			JOptionPane.showMessageDialog(null,"\t\tGood Job !!\n" + fp1.getWord() + " is the right word !!\nCongradulations you guessed the word!\n So far you have won " + numTries1 + " time(s)!");
+			JOptionPane.showMessageDialog(null,"\t\tGood Job !!\n" + fp1.getWord() + " is the right word !!\nCongradulations you guessed the word!\n So far you have won " + numTries1 + " time(s)! \nYour Score is : "+ let1.length());
+
 		}
 
 	
@@ -219,7 +220,7 @@ public void playGamep2()throws IOException		//game method
 			{
 				gameboard2[i] = let2.toCharArray()[i];
 			}
-			JOptionPane.showMessageDialog(null,"\t\tGood Job !!\n" + fp2.getWord() + " is the right word !!\nCongradulations you guessed the word!\n So far you have won " + numTries2 + " time(s)!");
+			JOptionPane.showMessageDialog(null,"\t\tGood Job !!\n" + fp2.getWord() + " is the right word !!\nCongradulations you guessed the word!\n So far you have won " + numTries2 + " time(s)! \nYour Score is : "+ let2.length());
 			System.exit(0);
 		}
 
@@ -234,7 +235,7 @@ public void playGamep2()throws IOException		//game method
 			let2 = JOptionPane.showInputDialog(s2);
 			if(count2 == 4)
 				{
-				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! ");
+				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! \nYour Score is : 0 ");
 				System.exit(0);
 				}
 			}
