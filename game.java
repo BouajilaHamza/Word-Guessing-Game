@@ -40,7 +40,7 @@ public class game
 		score2=s2.length();
 
     	  for(int x=0;x<12 ;x++) 	//populatiing gameboard with _ characters of the length of the word.
-    	{
+    	  {
 			if (s.length() == 12)
 				{ 
 	   	 			gameboard1[x] = scramble(r, s+s2)[x] ;
@@ -114,7 +114,7 @@ public char[] scramble( Random random, String inputString )
 
 
 	
-	public void playGamep1()throws IOException		//game method
+	public void playGame()throws IOException		//game method
     {
 		
 		JOptionPane.showMessageDialog(null,"   Player 1  ");
@@ -173,22 +173,11 @@ public char[] scramble( Random random, String inputString )
 				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! \nThe word is : " + fp1.getWord() +"\nYour Score is : "+score1,"Word Guessing Game", 0);
 			}
     }
-		}
+	}
 			
-		}
+		
 
 	
-
-
-    
-
-
-
-
-
-
-public void playGamep2()throws IOException		//game method
-    {
 
 		JOptionPane.showMessageDialog(null,"   Player 2  ","Word Guessing Game", 0);
 
@@ -246,26 +235,21 @@ public void playGamep2()throws IOException		//game method
 			}
 		}
 		
-		}
-
-		
-		public void Result() throws IOException
-		{
 			if (score1<score2)
 			{
 				JOptionPane.showMessageDialog(null,"Player 2 Is The Winner ! \nWith Score : "+score2);
 				System.exit(0);
 			}
-		if(score2<score1)
-		{
+		    if(score2<score1)
+		    {
 			 	JOptionPane.showMessageDialog(null,"Player 1 Is The Winner ! \nWith Score : "+score1);
 				System.exit(0);	
-		}
-		else
-		{
+		    }
+		    else
+		    {
 			    JOptionPane.showMessageDialog(null,"Equal Result !");
 			    System.exit(0);	
-		}
+		    }
 		}
 		
 
