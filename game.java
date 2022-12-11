@@ -19,7 +19,7 @@ public class game
 	String play;
 	int numTries1; int numTries2;
 	int highscore;
-	int scorep1 ;   int scorep2 ;
+	// int score1 ;   int score2 ;
 	Random r  = new Random();
 	// boolean w = game1Won(a1);
     public game()throws IOException
@@ -34,6 +34,9 @@ public class game
 		String s2 = fp2.getWord();
 		String g1 = generate(s+s2) ;
 		String g2 = generate(s+s2) ;
+
+		// score1=s.length();
+		// score2=s2.length();
 
     	  for(int x=0;x<12 ;x++) 	//populatiing gameboard with _ characters of the length of the word.
     	{
@@ -109,10 +112,10 @@ public char[] scramble( Random random, String inputString )
 	}	
 
 
-
+	
 	public void playGamep1()throws IOException		//game method
     {
-
+		
 		JOptionPane.showMessageDialog(null,"   Player 1  ");
 
     	s1= "Choose a letter to complete the word:\n";
@@ -142,7 +145,7 @@ public char[] scramble( Random random, String inputString )
 		}
 
 	}
-
+    int score1=let1.length();
 	
 		if(let1.equals(fp1.getWord()))
 		{
@@ -150,7 +153,7 @@ public char[] scramble( Random random, String inputString )
 			{
 				gameboard1[i] = let1.toCharArray()[i];
 			}
-			JOptionPane.showMessageDialog(null,"\t\tGood Job !!\n" + fp1.getWord() + " is the right word !!\nCongradulations you guessed the word!\n So far you have won " + numTries1 + " time(s)! \nYour Score is : "+ let1.length());
+			JOptionPane.showMessageDialog(null,"\t\tGood Job !!\n" + fp1.getWord() + " is the right word !!\nCongradulations you guessed the word!\n So far you have won " + numTries1 + " time(s)! \nYour Score is : "+ score1);
 
 		}
 
@@ -165,15 +168,18 @@ public char[] scramble( Random random, String inputString )
 			let1 = JOptionPane.showInputDialog(s1);
 			if(count1 == 4)
 			{
-				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! \nThe word is : " + fp1.getWord() +"\nYour Score is : 0 ");
+				score1=0;
+				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! \nThe word is : " + fp1.getWord() +"\nYour Score is : "+score1);
 			}
-}
+    }
+		}
+			
 		}
 
 	
 
 
-    }
+    
 
 
 
@@ -213,14 +219,15 @@ public void playGamep2()throws IOException		//game method
 
 	}
 	
-	
+	int score2=let2.length();
+
 		if(let2.equals(fp2.getWord()))
 		{
 			for(int i =0 ; i < let2.length() ;i++)
 			{
 				gameboard2[i] = let2.toCharArray()[i];
 			}
-			JOptionPane.showMessageDialog(null,"\t\tGood Job !!\n" + fp2.getWord() + " is the right word !!\nCongradulations you guessed the word!\n So far you have won " + numTries2 + " time(s)! \nYour Score is : "+ let2.length());
+			JOptionPane.showMessageDialog(null,"\t\tGood Job !!\n" + fp2.getWord() + " is the right word !!\nCongradulations you guessed the word!\n So far you have won " + numTries2 + " time(s)! \nYour Score is : "+ score2);
 			System.exit(0);
 		}
 
@@ -235,15 +242,29 @@ public void playGamep2()throws IOException		//game method
 			let2 = JOptionPane.showInputDialog(s2);
 			if(count2 == 4)
 				{
-				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! \nThe word is : " + fp2.getWord()+"\nYour Score is : 0 ");
+				score2=0;
+				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! \nThe word is : " + fp2.getWord()+"\nYour Score is : "+score2);
 				System.exit(0);
 				}
 			}
 		}
+		
+		}
+		// public void Result() throws IOException
+		// {
+		// 	if (score1<score2)
+		// 	{
+		// 		JOptionPane.showMessageDialog(null,"Player 2 Is The Winner ! \nWith Score : "+score2);
+		// 		System.exit(0);
+
+
+		// 	}
+		// }
+		
 
 	}
 	
-}
+
 
 
 
