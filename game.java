@@ -116,7 +116,7 @@ public char[] scramble( Random random, String inputString )
 		{
 		s1+=str + " ";											//PRINTING GAMEBOARD AND STORING STRING IN VARIALBE S
 		}
-		s1+="\nThere are " + fp1.getLength() + " letters in this word" ;
+		s1+="\nThere are " + fp1.getLength() + " letters in this word" + "The word is " + fp1.getWord() ;
 
 		let1 = JOptionPane.showInputDialog(s1);
 
