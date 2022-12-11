@@ -81,12 +81,17 @@ public char[] scramble( Random random, String inputString )
     char a[] = inputString.toCharArray();
 
     // Scramble the letters using the standard Fisher-Yates shuffle, 
-    for( int i=0 ; i<a.length; i++ )
-    {
+        int i=0;
         int j = random.nextInt(a.length);
         // Swap letters
-        char temp = a[i]; a[i] = a[j];  a[j] = temp;
-    }       
+		ArrayList<Integer> L=new ArrayList<Integer>();
+		L.add(i);
+        if (i<a.length) {
+			if (! L.contains(j)) { 
+			   char temp = a[i]; a[i] = a[j];  a[j] = temp;
+			   i++;}
+            } 
+       
     return a ;
 }
 
