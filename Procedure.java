@@ -23,7 +23,7 @@ public class Procedure
 
 	public static void message()	//WELCOME MESSAGE
 	{
-		JOptionPane.showMessageDialog(null, "Welcome to the Word Guessing Game!\nYou will choose a category of words and try to\n guess the letters in the word. Good Luck!");
+		JOptionPane.showMessageDialog(null, "Welcome to the Word Guessing Game!\nYou will choose a category of words and try to\n guess the letters in the word. Good Luck!","Word Guessing Game", 0);
 	}
 
 
@@ -32,11 +32,11 @@ public class Procedure
 		String txtfile;			//declaring feilds
 		String category;
 
-	category = JOptionPane.showInputDialog("Please Enter a number of the category you wish to guess \n 1.Fruits\n 2.Animals\n 3.Flowers ");
+	category = JOptionPane.showInputDialog(null, "Please Enter a number of the category you wish to guess \n 1.Fruits\n 2.Animals\n 3.Flowers ","Word Guessing Game", 0);
 
 		if(category==null)		//testing to see if user hit cancel button
 		{
-		JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!");
+		JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!","Word Guessing Game", 0);
 		System.exit(0);
 		}
 
@@ -48,7 +48,7 @@ public class Procedure
 
 			if(category==null)			//testing to see if user hit cancel button
 			{
-			JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!");
+			JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!","Word Guessing Game", 0);
 			System.exit(0);
 			}
 

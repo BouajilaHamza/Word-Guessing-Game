@@ -1,4 +1,5 @@
 //Joseph Mulray Final Project Word Guessing Game May 1 2015
+import javax.lang.model.util.ElementScanner14;
 import javax.swing.JOptionPane;	//importing jOptionPane, util package, and throws IO Exception
 import java.util.*;
 import java.io.*;
@@ -130,17 +131,17 @@ public char[] scramble( Random random, String inputString )
 
 		if(let1==null) //testing to see if user hit the cancel button
 		{
-		JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!");
+		JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!","Word Guessing Game", 0);
 		System.exit(0);	//ends the program
 		}
 
 	while(let1.length()==0 || Character.isLetter(let1.charAt(0))== false)		//tests conditions of input whether input was eventered
 	{																		// or whether the input was a letter or not
-		JOptionPane.showMessageDialog(null,"Invalid answer!");
+		JOptionPane.showMessageDialog(null,"Invalid answer!","Word Guessing Game", 0);
 		let1 = JOptionPane.showInputDialog(s1);
 		if(let1==null)											//testing to see if user hit the cancel button
 		{
-		JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!");
+		JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!","Word Guessing Game", 0);
 		System.exit(0);
 		}
 
@@ -153,7 +154,7 @@ public char[] scramble( Random random, String inputString )
 			{
 				gameboard1[i] = let1.toCharArray()[i];
 			}
-			JOptionPane.showMessageDialog(null,"\t\tGood Job !!\n" + fp1.getWord() + " is the right word !!\nCongradulations you guessed the word!\n So far you have won " + numTries1 + " time(s)! \nYour Score is : "+ score1);
+			JOptionPane.showMessageDialog(null,"\t\tGood Job !!\n" + fp1.getWord() + " is the right word !!\nCongradulations you guessed the word!\n So far you have won " + numTries1 + " time(s)! \nYour Score is : "+ score1,"Word Guessing Game", 0);
 
 		}
 
@@ -164,12 +165,12 @@ public char[] scramble( Random random, String inputString )
 			while(count1 != 4 && !let1.equals(fp1.getWord()) )
 			{
 			count1++;
-			JOptionPane.showMessageDialog(null, let1 + " is not the word\nYou have " + (4-count1) + "  attempts remaing" );
+			JOptionPane.showMessageDialog(null, let1 + " is not the word\nYou have " + (4-count1) + "  attempts remaing","Word Guessing Game", 0 );
 			let1 = JOptionPane.showInputDialog(s1);
 			if(count1 == 4)
 			{
 				score1=0;
-				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! \nThe word is : " + fp1.getWord() +"\nYour Score is : "+score1);
+				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! \nThe word is : " + fp1.getWord() +"\nYour Score is : "+score1,"Word Guessing Game", 0);
 			}
     }
 		}
@@ -189,7 +190,7 @@ public char[] scramble( Random random, String inputString )
 public void playGamep2()throws IOException		//game method
     {
 
-		JOptionPane.showMessageDialog(null,"   Player 2  ");
+		JOptionPane.showMessageDialog(null,"   Player 2  ","Word Guessing Game", 0);
 
     	s2= "Choose a letter to complete the word:\n";
 
@@ -203,17 +204,17 @@ public void playGamep2()throws IOException		//game method
 
 		if(let2==null) //testing to see if user hit the cancel button
 		{
-		JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!");
+		JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!","Word Guessing Game", 0);
 		System.exit(0);	//ends the program
 		}
 
 	while(let2.length()==0 || Character.isLetter(let2.charAt(0))== false)		//tests conditions of input whether input was eventered
 	{																		// or whether the input was a letter or not
-		JOptionPane.showMessageDialog(null,"Invalid answer!");
+		JOptionPane.showMessageDialog(null,"Invalid answer!","Word Guessing Game", 0);
 		let2 = JOptionPane.showInputDialog(s2);
 		if(let2==null)											//testing to see if user hit the cancel button
 		{
-		JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!");
+		JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!","Word Guessing Game", 0);
 		System.exit(0);
 		}
 
@@ -227,7 +228,7 @@ public void playGamep2()throws IOException		//game method
 			{
 				gameboard2[i] = let2.toCharArray()[i];
 			}
-			JOptionPane.showMessageDialog(null,"\t\tGood Job !!\n" + fp2.getWord() + " is the right word !!\nCongradulations you guessed the word!\n So far you have won " + numTries2 + " time(s)! \nYour Score is : "+ score2);
+			JOptionPane.showMessageDialog(null,"\t\tGood Job !!\n" + fp2.getWord() + " is the right word !!\nCongradulations you guessed the word!\n So far you have won " + numTries2 + " time(s)! \nYour Score is : "+ score2,"Word Guessing Game", 0);
 			System.exit(0);
 		}
 
@@ -238,12 +239,12 @@ public void playGamep2()throws IOException		//game method
 			while(count2 != 4 && !let2.equals(fp2.getWord()) )
 			{
 			count2++;
-			JOptionPane.showMessageDialog(null, let2 + " is not the word\nYou have " + (4-count2) + "  attempts remaing" );
+			JOptionPane.showMessageDialog(null, let2 + " is not the word\nYou have " + (4-count2) + "  attempts remaing" ,"Word Guessing Game", 0);
 			let2 = JOptionPane.showInputDialog(s2);
 			if(count2 == 4)
 				{
 				score2=0;
-				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! \nThe word is : " + fp2.getWord()+"\nYour Score is : "+score2);
+				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! \nThe word is : " + fp2.getWord()+"\nYour Score is : "+score2,"Word Guessing Game", 0);
 				System.exit(0);
 				}
 			}
@@ -256,9 +257,17 @@ public void playGamep2()throws IOException		//game method
 		// 	{
 		// 		JOptionPane.showMessageDialog(null,"Player 2 Is The Winner ! \nWith Score : "+score2);
 		// 		System.exit(0);
-
-
 		// 	}
+		// if(score2<score1)
+		// {
+		// 	 	JOptionPane.showMessageDialog(null,"Player 1 Is The Winner ! \nWith Score : "+score1);
+		// 		System.exit(0);	
+		// }
+		// else
+		// {
+		// 	    JOptionPane.showMessageDialog(null,"Equal Result !");
+		// 	    System.exit(0);	
+		// }
 		// }
 		
 
