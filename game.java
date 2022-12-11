@@ -20,7 +20,7 @@ public class game
 	String play;
 	int numTries1; int numTries2;
 	int highscore;
-	// int score1 ;   int score2 ;
+	int score1 ;   int score2 ;
 	Random r  = new Random();
 	// boolean w = game1Won(a1);
     public game()throws IOException
@@ -36,8 +36,8 @@ public class game
 		String g1 = generate(s+s2) ;
 		String g2 = generate(s+s2) ;
 
-		// score1=s.length();
-		// score2=s2.length();
+		score1=s.length();
+		score2=s2.length();
 
     	  for(int x=0;x<12 ;x++) 	//populatiing gameboard with _ characters of the length of the word.
     	{
@@ -205,7 +205,6 @@ public void playGamep2()throws IOException		//game method
 		if(let2==null) //testing to see if user hit the cancel button
 		{
 		JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!","Word Guessing Game", 0);
-		System.exit(0);	//ends the program
 		}
 
 	while(let2.length()==0 || Character.isLetter(let2.charAt(0))== false)		//tests conditions of input whether input was eventered
@@ -215,7 +214,6 @@ public void playGamep2()throws IOException		//game method
 		if(let2==null)											//testing to see if user hit the cancel button
 		{
 		JOptionPane.showMessageDialog(null,"Cancel buttton clicked\n Program Terminated!\n Good-bye!","Word Guessing Game", 0);
-		System.exit(0);
 		}
 
 	}
@@ -229,7 +227,6 @@ public void playGamep2()throws IOException		//game method
 				gameboard2[i] = let2.toCharArray()[i];
 			}
 			JOptionPane.showMessageDialog(null,"\t\tGood Job !!\n" + fp2.getWord() + " is the right word !!\nCongradulations you guessed the word!\n So far you have won " + numTries2 + " time(s)! \nYour Score is : "+ score2,"Word Guessing Game", 0);
-			System.exit(0);
 		}
 
 	
@@ -245,30 +242,31 @@ public void playGamep2()throws IOException		//game method
 				{
 				score2=0;
 				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! \nThe word is : " + fp2.getWord()+"\nYour Score is : "+score2,"Word Guessing Game", 0);
-				System.exit(0);
 				}
 			}
 		}
 		
 		}
-		// public void Result() throws IOException
-		// {
-		// 	if (score1<score2)
-		// 	{
-		// 		JOptionPane.showMessageDialog(null,"Player 2 Is The Winner ! \nWith Score : "+score2);
-		// 		System.exit(0);
-		// 	}
-		// if(score2<score1)
-		// {
-		// 	 	JOptionPane.showMessageDialog(null,"Player 1 Is The Winner ! \nWith Score : "+score1);
-		// 		System.exit(0);	
-		// }
-		// else
-		// {
-		// 	    JOptionPane.showMessageDialog(null,"Equal Result !");
-		// 	    System.exit(0);	
-		// }
-		// }
+
+		
+		public void Result() throws IOException
+		{
+			if (score1<score2)
+			{
+				JOptionPane.showMessageDialog(null,"Player 2 Is The Winner ! \nWith Score : "+score2);
+				System.exit(0);
+			}
+		if(score2<score1)
+		{
+			 	JOptionPane.showMessageDialog(null,"Player 1 Is The Winner ! \nWith Score : "+score1);
+				System.exit(0);	
+		}
+		else
+		{
+			    JOptionPane.showMessageDialog(null,"Equal Result !");
+			    System.exit(0);	
+		}
+		}
 		
 
 	}

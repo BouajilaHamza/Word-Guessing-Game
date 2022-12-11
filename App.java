@@ -13,7 +13,7 @@ public class App {
     //Play game method
     g.playGamep1();
     g.playGamep2();
-    // g.Result();
+    g.Result();
 
     }
 
