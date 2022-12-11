@@ -121,7 +121,7 @@ public char[] scramble( Random random, String inputString )
 		{
 		s1+=str + " ";											//PRINTING GAMEBOARD AND STORING STRING IN VARIALBE S
 		}
-		s1+="\nThere are " + fp1.getLength() + " letters in this word" + "The word is " + fp1.getWord() ;
+		s1+="\nThere are " + fp1.getLength() + " letters in this word" ;
 
 		let1 = JOptionPane.showInputDialog(s1);
 
@@ -165,7 +165,7 @@ public char[] scramble( Random random, String inputString )
 			let1 = JOptionPane.showInputDialog(s1);
 			if(count1 == 4)
 			{
-				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! ");
+				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! \nThe word is : " + fp1.getWord() +"\nYour Score is : 0 ");
 			}
 }
 		}
@@ -235,7 +235,7 @@ public void playGamep2()throws IOException		//game method
 			let2 = JOptionPane.showInputDialog(s2);
 			if(count2 == 4)
 				{
-				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! \nYour Score is : 0 ");
+				JOptionPane.showMessageDialog(null,"You are out of attempts , Good Luck next Time !! \nThe word is : " + fp2.getWord()+"\nYour Score is : 0 ");
 				System.exit(0);
 				}
 			}
