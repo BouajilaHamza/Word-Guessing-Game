@@ -6,10 +6,8 @@
 ```cd Word-Guessing-Game/```
 
 ## To Run Game :
-
-```javac ```
+```javac game.java ```
 
 ## When finished playing:
-
 ```make clean```
 
