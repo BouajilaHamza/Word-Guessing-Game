@@ -5,8 +5,9 @@
 
 ```cd Word-Guessing-Game/```
 
-## To Run Game:
+## To Run Game :
 
+```javac ```
 
 ## When finished playing:
 
